@@ -1,1 +1,18 @@
 @charset "utf-8";
+.view .inner { max-width: 1400px; width: 95%; margin-left: auto; margin-right: auto; position: relative;}
+.view figure { position: relative; width: 100%; height: 0; padding-bottom: 50%; margin: 0 0 20px 0;}
+.view figure img { position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
+.content-code-area { position: fixed; bottom: 0; left: 50%; transform: translate(-50%); background: #fff;}
+.content-code-area textarea { width: 800px; height: 400px;}
+body[cz-shortcut-listen="true"] { display: none;}
+
+/* aside */
+.view .side-bar { position: fixed; left: 0; top: 0; height: 100vh; overflow: hidden;}
+.view .side-bar .aside-wrap { width: 300px; height: 100%; padding: 20px 0; overflow-x: hidden; overflow-y: auto; background: linear-gradient(45deg, black, royalblue);}
+.view .side-bar .aside-wrap li a { display: block; font-size: 30px; font-weight: bold; padding: 5px 30px; color: #fff;}
+
+/* main */
+.view .section { padding: 120px 0 120px 300px;}
+.view .section .heading { font-size: 60px; font-weight: bold; text-align: center; margin-bottom: 40px;}
+.view .article-group { display: flex; flex-wrap: wrap; gap: 20px;}
+.view .article-group article { width: calc((100% - 40px) / 3);}

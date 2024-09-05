@@ -1,0 +1,49 @@
+<div class="kit-group">
+  <div class="content-view-area">
+    <div class="kit-view-box">
+<div class="flex-box">
+<div class="col">Column 1</div>
+<div class="col">Column 2</div>
+<div class="col">Column 3</div>
+</div>
+<style>
+.col {
+width: auto;
+}
+</style>
+<script>
+const flexBox = document.querySelector('.flex-box');
+flexBox.style.display = 'flex';
+flexBox.style.justifyContent = 'space-between';
+flexBox.style.alignItems = 'center';
+flexBox.style.flexWrap = 'wrap';
+flexBox.style.width = '100%';
+flexBox.style.height = '100px';
+flexBox.style.backgroundColor = '#f0f0f0';
+flexBox.style.border = '1px solid #000';
+flexBox.style.padding = '10px';
+flexBox.style.boxSizing = 'border-box';
+
+const cols = document.querySelectorAll('.col');
+cols.forEach((col) => {
+col.style.width = '30%';
+col.style.height = '50px';
+col.style.backgroundColor = '#fff';
+col.style.border = '1px solid #000';
+col.style.boxSizing = 'border-box';
+col.style.textAlign = 'center';
+col.style.lineHeight = '50px';
+});
+</script>
+    </div>
+  </div>
+  <div class="content-code-area">
+    <div class="tabs">
+      <button class="tab-button" data-tab="html">HTML</button>
+      <button class="tab-button" data-tab="css">CSS</button>
+      <button class="tab-button" data-tab="js">JavaScript</button>
+    </div>
+    <textarea role="10" cols="60" class="kit-code-box"></textarea>
+    <button class="copy-button">복사</button>
+  </div>
+</div>

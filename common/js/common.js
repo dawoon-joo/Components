@@ -1,16 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
-  common.sub();
+  const kitGroups = document.querySelectorAll('.kit-group');
+  kitGroups.forEach(group => {
+    codeTabs(group);
+  });
+  includeHTML();
 });
 
-let common = {
-  sub: ()=> {
-    const kitGroups = document.querySelectorAll('.kit-group');
-    kitGroups.forEach(group => {
-      codeTabs(group);
-    });
-    includeHTML();
-  }
-}
 
 // 코드펜
 function codeTabs(kitGroup) {
@@ -51,21 +46,20 @@ function codeTabs(kitGroup) {
     alert('코드가 복사되었습니다!');
   });
 }
-// 인클루드
+
 function includeHTML() {
-  const elements = document.querySelectorAll('[data-include]');
-  elements.forEach(el => {
-    const file = el.getAttribute('data-include');
-    fetch(file)
-      .then(response => {
-        if (response.ok) return response.text();
-        throw new Error('Network response was not ok.');
-      })
-      .then(data => {
-        el.outerHTML = data;
-      })
-      .catch(error => {
-        console.error('Error fetching the file:', error);
-      });
+  var allElements = document.getElementsByTagName('*');
+  Array.prototype.forEach.call(allElements, function (el) {
+    var includePath = el.dataset.includePath;
+    if (includePath) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          el.outerHTML = this.responseText;
+        }
+      };
+      xhttp.open('GET', includePath, true);
+      xhttp.send();
+    }
   });
 }
