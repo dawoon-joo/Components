@@ -3,8 +3,8 @@
 .view figure { position: relative; width: 100%; height: 0; padding-bottom: 50%; margin: 0 0 20px 0;}
 .view figure img { position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
 .content-code-area { position: fixed; bottom: 0; left: 50%; transform: translate(-50%); background: #fff;}
-.content-code-area textarea { width: 800px; height: 400px;}
-body[cz-shortcut-listen="true"] { display: none;}
+.content-code-area pre { width: 800px; height: 400px; overflow-y: auto;}
+
 
 /* aside */
 .view .side-bar { position: fixed; left: 0; top: 0; height: 100vh; overflow: hidden;}

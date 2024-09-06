@@ -30,6 +30,10 @@ function codeTabs(kitGroup) {
         const scriptTag = viewBox.querySelector('script');
         codeBox.value = scriptTag ? scriptTag.innerHTML : '';
       }
+
+      // 코드에 구문 강조 적용
+      const highlightedCode = hljs.highlightAuto(codeBox.value).value;
+      codeBox.innerHTML = `<pre><code class="hljs">${highlightedCode}</code></pre>`;
     });
   });
 
@@ -41,9 +45,16 @@ function codeTabs(kitGroup) {
 
   // 복사 버튼 클릭 시 kit-code-box의 내용을 클립보드에 복사
   kitGroup.querySelector('.copy-button').addEventListener('click', function () {
-    codeBox.select();
-    document.execCommand('copy');
-    alert('코드가 복사되었습니다!');
+    const codeElement = codeBox.querySelector('code');
+    if (codeElement) {
+      const range = document.createRange();
+      range.selectNodeContents(codeElement);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      document.execCommand('copy');
+      alert('코드가 복사되었습니다!');
+    }
   });
 }
 
