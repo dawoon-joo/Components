@@ -64,7 +64,7 @@ function includeHTML() {
     var includePath = el.dataset.includePath;
     if (includePath) {
       // 경로를 동적으로 설정
-      var path = window.location.hostname === "192.168.0.7" ? includePath : "/Components" + includePath;
+      var path = window.location.hostname === "192.168.0.7" ? includePath : "/Components/Components" + includePath;
       
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
