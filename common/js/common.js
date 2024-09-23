@@ -63,13 +63,16 @@ function includeHTML() {
   Array.prototype.forEach.call(allElements, function (el) {
     var includePath = el.dataset.includePath;
     if (includePath) {
+      // 경로를 동적으로 설정
+      var path = window.location.hostname === "192.168.0.7" ? includePath : "/Components" + includePath;
+      
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-          el.outerHTML = this.responseText;
+          el.innerHTML = this.responseText;
         }
       };
-      xhttp.open('GET', includePath, true);
+      xhttp.open('GET', path, true);
       xhttp.send();
     }
   });
