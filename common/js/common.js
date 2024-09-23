@@ -58,6 +58,7 @@ function codeTabs(kitGroup) {
   });
 }
 
+
 function includeHTML() {
   var allElements = document.getElementsByTagName('*');
   Array.prototype.forEach.call(allElements, function (el) {
@@ -80,9 +81,9 @@ function includeHTML() {
     }
   });
 }
-
+//git == local 경로
 function setDynamicLinks() {
-  const links = document.querySelectorAll('a');
+  const links = document.querySelectorAll('aside a');
   links.forEach(link => {
     if (window.location.hostname === "192.168.0.7") {
       link.href = link.getAttribute('href');
