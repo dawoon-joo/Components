@@ -64,16 +64,30 @@ function includeHTML() {
     var includePath = el.dataset.includePath;
     if (includePath) {
       // 경로를 동적으로 설정
-      var path = window.location.hostname === "192.168.0.7" ? includePath : "/Components/Components" + includePath;
+      var path = window.location.hostname === "192.168.0.7" ? includePath : "/Components" + includePath;
       
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           el.innerHTML = this.responseText;
+
+          // includeHTML이 완료된 후 링크를 동적으로 설정
+          setDynamicLinks();
         }
       };
       xhttp.open('GET', path, true);
       xhttp.send();
+    }
+  });
+}
+
+function setDynamicLinks() {
+  const links = document.querySelectorAll('a');
+  links.forEach(link => {
+    if (window.location.hostname === "192.168.0.7") {
+      link.href = link.getAttribute('href');
+    } else {
+      link.href = "/Components" + link.getAttribute('href');
     }
   });
 }
