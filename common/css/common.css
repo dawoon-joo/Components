@@ -2,7 +2,7 @@
 .kit-view-box { min-height: 100vh; place-content: center; } 
 code { display: block; } 
 .content-code-area { position: fixed; bottom: 10px; left: 50%; transform: translate(-50%); width: 100%; } 
-.content-code-area .inner { background: #151515; border-radius: 15px;} 
+.content-code-area .inner { background: #151515; border-radius: 15px; border: 1px solid #444; overflow: hidden;} 
 .content-code-area .content-top { display: flex; align-items: center; padding: 10px 5px; gap: 10px;} 
 .content-code-area .content-top button { width: max-content; height: max-content; display: flex; align-items: center; justify-content: center; } 
 .content-code-area .content-top button.btn-accordion { transform: scaleY(-1);}
@@ -13,7 +13,8 @@ code { display: block; }
 .content-code-area .tabs { display: flex; gap: 20px; padding: 5px;} 
 .content-code-area .tabs button { color: #fff; font-weight: bold; font-size: 20px; } 
 .content-code-area .copy-button { margin-left: auto;} 
-.content-code-area pre { width: 100%; height: 400px; overflow-y: auto; background: #fff; margin: 0; } 
+.content-code-area pre { width: 100%; height: 400px; overflow-y: auto; margin: 0; } 
+.content-code-area pre > code { min-height: 100%;}
 /* vscode-theme.css */
 .hljs { color: #abb2bf; background: #282c34; } 
 .hljs-comment,
