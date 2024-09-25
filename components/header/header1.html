@@ -517,14 +517,20 @@ function language(){
       </div>
     </div>
     <div class="content-code-area">
-        <div class="inner">
-            <div class="tabs">
+        <div class="inner accordion-wrap">
+            <div class="content-top">
+              <button type="button" class="btn-accordion on"><img src="../../common/img/ico-arrow-accodian.png" alt=""></button>
+              <button type="button" class="btn-prevlink"><img src="../../common/img/ico-arrow-prevlink.png" alt=""></button>
+            </div>
+            <div class="content-body on">
+              <div class="tabs">
                 <button class="tab-button" data-tab="html">HTML</button>
                 <button class="tab-button" data-tab="css">CSS</button>
                 <button class="tab-button" data-tab="js">JavaScript</button>
+                <button class="copy-button">복사</button>
+              </div>
+              <code class="kit-code-box hljs"></code>
             </div>
-            <code class="kit-code-box hljs"></code>
-            <button class="copy-button">복사</button>
         </div>
     </div>
   </div>

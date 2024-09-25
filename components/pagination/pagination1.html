@@ -26,7 +26,6 @@
       <div class="kit-view-box">
 <!-- html , style, js 작성 -->
 <div class="width_box2">
-  <h2 class="tit_h2">Campaign</h2>
   <ul class="campaign_list container">
     <li>
       <a href="/casscool">
@@ -250,14 +249,20 @@ class Pagination {
       </div>
     </div>
     <div class="content-code-area">
-      <div class="inner">
-        <div class="tabs">
-          <button class="tab-button" data-tab="html">HTML</button>
-          <button class="tab-button" data-tab="css">CSS</button>
-          <button class="tab-button" data-tab="js">JavaScript</button>
+      <div class="inner accordion-wrap">
+        <div class="content-top">
+          <button type="button" class="btn-accordion on"><img src="../../common/img/ico-arrow-accodian.png" alt=""></button>
+          <button type="button" class="btn-prevlink"><img src="../../common/img/ico-arrow-prevlink.png" alt=""></button>
         </div>
-        <code class="kit-code-box hljs theme-atom-one-dark"></code>
-        <button class="copy-button">복사</button>
+        <div class="content-body on">
+          <div class="tabs">
+            <button class="tab-button" data-tab="html">HTML</button>
+            <button class="tab-button" data-tab="css">CSS</button>
+            <button class="tab-button" data-tab="js">JavaScript</button>
+            <button class="copy-button">복사</button>
+          </div>
+          <code class="kit-code-box hljs"></code>
+        </div>
       </div>
     </div>
   </div>

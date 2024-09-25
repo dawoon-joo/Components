@@ -1,8 +1,18 @@
-@charset "utf-8"; 
-.inner { max-width: 1400px; width: 95%; margin-left: auto; margin-right: auto; position: relative; } 
+@charset "utf-8";.inner { max-width: 1400px; width: 95%; margin-left: auto; margin-right: auto; position: relative; } 
+.kit-view-box { min-height: 100vh; place-content: center; } 
 code { display: block; } 
-.content-code-area { position: fixed; bottom: 0; left: 50%; transform: translate(-50%); width: 100%; } 
-.content-code-area .inner { background: #fff; } 
+.content-code-area { position: fixed; bottom: 10px; left: 50%; transform: translate(-50%); width: 100%; } 
+.content-code-area .inner { background: #151515; border-radius: 15px;} 
+.content-code-area .content-top { display: flex; align-items: center; padding: 10px 5px; gap: 10px;} 
+.content-code-area .content-top button { width: max-content; height: max-content; display: flex; align-items: center; justify-content: center; } 
+.content-code-area .content-top button.btn-accordion { transform: scaleY(-1);}
+.content-code-area .content-top button.btn-accordion.on { transform: scaleY(1);}
+.content-code-area .content-top button img { width:30px; height: 30px; } 
+.content-code-area .content-body { max-height: 0; overflow: hidden; transition: max-height 0.5s;} 
+.content-code-area .content-body.on { max-height: 2000px;} 
+.content-code-area .tabs { display: flex; gap: 20px; padding: 5px;} 
+.content-code-area .tabs button { color: #fff; font-weight: bold; font-size: 20px; } 
+.content-code-area .copy-button { margin-left: auto;} 
 .content-code-area pre { width: 100%; height: 400px; overflow-y: auto; background: #fff; margin: 0; } 
 /* vscode-theme.css */
 .hljs { color: #abb2bf; background: #282c34; } 

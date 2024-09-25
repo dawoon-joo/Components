@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     codeTabs(group);
   });
   includeHTML();
+  accordion('.accordion-wrap .btn-accordion', '.accordion-wrap .content-body');
+  backButton('.btn-prevlink')
 });
 
 
@@ -91,4 +93,39 @@ function setDynamicLinks() {
       link.href = "/Components" + link.getAttribute('href');
     }
   });
+}
+
+// 아코디언 드롭다운
+function accordion(accordionBtnSelector, accordionContentSelector) {
+  const accordionBtns = document.querySelectorAll(accordionBtnSelector);
+  const accordionContents = document.querySelectorAll(accordionContentSelector);
+
+  accordionBtns.forEach((el, idx) => {
+    el.addEventListener('click', () => {
+      const isActive = el.classList.contains('on');
+
+      accordionBtns.forEach((btn) => {
+        btn.classList.remove('on');
+      });
+      accordionContents.forEach((content) => {
+        content.classList.remove('on');
+      });
+
+      if (!isActive) {
+        el.classList.add('on');
+        accordionContents[idx].classList.add('on');
+      }
+    });
+  });
+}
+
+// 뒤로가기
+function backButton(buttonSelector) {
+  const backButton = document.querySelector(buttonSelector);
+
+  if (backButton) {
+    backButton.addEventListener('click', function () {
+      history.back();
+    });
+  }
 }
