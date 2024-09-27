@@ -60,7 +60,7 @@ function codeTabs(kitGroup) {
   });
 }
 
-
+// aside start
 function includeHTML() {
   var allElements = document.getElementsByTagName('*');
   Array.prototype.forEach.call(allElements, function (el) {
@@ -76,6 +76,7 @@ function includeHTML() {
 
           // includeHTML이 완료된 후 링크를 동적으로 설정
           setDynamicLinks();
+          SearchBtn();
         }
       };
       xhttp.open('GET', path, true);
@@ -83,9 +84,25 @@ function includeHTML() {
     }
   });
 }
+// 검색 버튼
+function SearchBtn() {
+  const searchInput = document.getElementById('searchInput');
+  const searchButton = document.getElementById('searchButton');
+
+  if (searchInput && searchButton) {
+    searchButton.addEventListener('click', function () {
+      const query = searchInput.value;
+      let searchPath = "/search.html?query=" + encodeURIComponent(query);
+      if (window.location.hostname !== "192.168.0.7") {
+        searchPath = "/Components" + searchPath;
+      }
+      window.location.href = searchPath;
+    });
+  }
+}
 //git == local 경로
 function setDynamicLinks() {
-  const links = document.querySelectorAll('aside a');
+  const links = document.querySelectorAll('.git-link');
   links.forEach(link => {
     if (window.location.hostname === "192.168.0.7") {
       link.href = link.getAttribute('href');
@@ -94,6 +111,7 @@ function setDynamicLinks() {
     }
   });
 }
+// aside end
 
 // 아코디언 드롭다운
 function accordion(accordionBtnSelector, accordionContentSelector) {
@@ -129,3 +147,4 @@ function backButton(buttonSelector) {
     });
   }
 }
+

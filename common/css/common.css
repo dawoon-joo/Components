@@ -1,20 +1,25 @@
-@charset "utf-8";.inner { max-width: 1400px; width: 95%; margin-left: auto; margin-right: auto; position: relative; } 
-.kit-view-box { min-height: 100vh; place-content: center; } 
-code { display: block; } 
-.content-code-area { position: fixed; bottom: 10px; left: 50%; transform: translate(-50%); width: 100%; } 
-.content-code-area .inner { background: #151515; border-radius: 15px; border: 1px solid #444; overflow: hidden;} 
-.content-code-area .content-top { display: flex; align-items: center; padding: 10px 5px; gap: 10px;} 
-.content-code-area .content-top button { width: max-content; height: max-content; display: flex; align-items: center; justify-content: center; } 
-.content-code-area .content-top button.btn-accordion { transform: scaleY(-1);}
-.content-code-area .content-top button.btn-accordion.on { transform: scaleY(1);}
-.content-code-area .content-top button img { width:30px; height: 30px; } 
-.content-code-area .content-body { max-height: 0; overflow: hidden; transition: max-height 0.5s;} 
-.content-code-area .content-body.on { max-height: 2000px;} 
-.content-code-area .tabs { display: flex; gap: 20px; padding: 5px;} 
-.content-code-area .tabs button { color: #fff; font-weight: bold; font-size: 20px; } 
-.content-code-area .copy-button { margin-left: auto;} 
-.content-code-area pre { width: 100%; height: 400px; overflow-y: auto; margin: 0; } 
-.content-code-area pre > code { min-height: 100%;}
+@charset "utf-8";
+:root {
+  --color-base: #fff;
+  --color-green: #00FE02;
+}
+#git .inner { max-width: 1400px; width: 95%; margin-left: auto; margin-right: auto; position: relative; } 
+#git .kit-view-box { min-height: 100vh;} 
+#git code { display: block; } 
+#git .content-code-area { position: fixed; bottom: 10px; left: 50%; transform: translate(-50%); width: 100%; } 
+#git .content-code-area .inner { background: #151515; border-radius: 15px; border: 1px solid #444; overflow: hidden;} 
+#git .content-code-area .content-top { display: flex; align-items: center; padding: 10px 5px; gap: 10px;} 
+#git .content-code-area .content-top button { width: max-content; height: max-content; display: flex; align-items: center; justify-content: center; } 
+#git .content-code-area .content-top button.btn-accordion { transform: scaleY(-1);}
+#git .content-code-area .content-top button.btn-accordion.on { transform: scaleY(1);}
+#git .content-code-area .content-top button img { width:30px; height: 30px; } 
+#git .content-code-area .content-body { max-height: 0; overflow: hidden; transition: max-height 0.5s;} 
+#git .content-code-area .content-body.on { max-height: 2000px;} 
+#git .content-code-area .tabs { display: flex; gap: 20px; padding: 5px;} 
+#git .content-code-area .tabs button { color: #fff; font-weight: bold; font-size: 20px; } 
+#git .content-code-area .copy-button { margin-left: auto;} 
+#git .content-code-area pre { width: 100%; height: 400px; overflow-y: auto; margin: 0; } 
+#git .content-code-area pre > code { min-height: 100%;}
 /* vscode-theme.css */
 .hljs { color: #abb2bf; background: #282c34; } 
 .hljs-comment,
@@ -55,16 +60,22 @@ code { display: block; }
 .hljs-link { text-decoration: underline; } 
 
 /* view */
-.view figure { position: relative; width: 100%; height: 0; padding-bottom: 50%; margin: 0 0 20px 0; } 
-.view figure img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; } 
+#git .view { background: #151515; min-height: 100vh; color: var(--color-base);}
+#git .view figure {position: relative;width: 100%;height: 0;padding-bottom: 60%;margin: 0 0 20px 0;} 
+#git .view figure img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; } 
 
 /* aside */
-.view .side-bar { position: fixed; left: 0; top: 0; height: 100vh; overflow: hidden; } 
-.view .side-bar .aside-wrap { width: 300px; height: 100%; padding: 20px 0; overflow-x: hidden; overflow-y: auto; background: linear-gradient(45deg, black, royalblue); } 
-.view .side-bar .aside-wrap li a { display: block; font-size: 30px; font-weight: bold; padding: 5px 30px; color: #fff; } 
+#git .view .side-bar { position: fixed; left: 0; top: 0; height: 100vh; overflow: hidden; color: var(--color-base);} 
+#git .view .side-bar .aside-wrap { width: 300px; height: 100%; padding: 20px 0; overflow-x: hidden; overflow-y: auto; background: #252525; } 
+#git .view .side-bar .aside-wrap li { border-bottom: 1px solid #444;}
+#git .view .side-bar .aside-wrap li a { display: block; font-size: 24px; font-weight: bold; padding: 18px 10px 18px 30px; color: #fff;} 
+#git .view .side-bar .search-group { display: flex; width: 100%; padding: 18px 10px 18px 30px; }
+#git .view .side-bar input { background: #151515; width: 100%; padding: 5px 10px; font-size: 16px; color: #fff;}
+#git .view .side-bar input::placeholder { font-size: 16px; color: #444;}
+#git .view .side-bar button { color: var(--color-base); flex: 0 0 20%; }
 
 /* main */
-.view .section { padding: 120px 0 120px 300px; } 
-.view .section .heading { font-size: 60px; font-weight: bold; text-align: center; margin-bottom: 40px; } 
-.view .article-group { display: flex; flex-wrap: wrap; gap: 20px; } 
-.view .article-group article { width: calc((100% - 40px) / 3); } 
+#git .view .section { padding: 120px 0 120px 300px; } 
+#git .view .section .heading { font-size: 60px; font-weight: bold; text-align: center; margin-bottom: 40px; } 
+#git .view .article-group { display: flex; flex-wrap: wrap; gap: 20px; } 
+#git .view .article-group article {width: calc((100% - 60px) / 4);} 
