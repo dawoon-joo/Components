@@ -33,5 +33,26 @@
     "keywords": "isotope, 아이소토프, 리스트, 아티클",
     "url": "./components/list/isotope.html",
     "thumbnail": "./common/img/list/isotope-thum.png"
+  },
+  {
+    "title": "Footer",
+    "description": "",
+    "keywords": "푸터, footer",
+    "url": "./components/footer/footer1.html",
+    "thumbnail": "./common/img/footer/footer-thum1.png"
+  },
+  {
+    "title": "Footer",
+    "description": "",
+    "keywords": "푸터, footer",
+    "url": "./components/footer/footer2.html",
+    "thumbnail": "./common/img/footer/footer-thum2.png"
+  },
+  {
+    "title": "GSAP 스크롤 sticky 효과",
+    "description": "",
+    "keywords": "sticky, 스티키, 스크롤",
+    "url": "./components/scroll/scroll1.html",
+    "thumbnail": "./common/img/scroll/scroll-thum1.gif"
   }
 ]
