@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../common/css/font/font.css">
+  <link rel="stylesheet" href="../../common/css/base.css">
+  <link rel="stylesheet" href="../../common/css/common.css">
+  <script src="../../common/js/gsap.min.js"></script>
+  <script src="../../common/js/scrollreveal.min.js"></script>
+  <script src="../../common/js/ScrollTrigger.min.js"></script>
+  <script src="../../common/js/ScrollToPlugin.min.js"></script>
+  <script src="../../common/js/jquery-1.12.4.min.js"></script>
+  <script src="../../common/js/jquery-1.8.3.min.js"></script>
+  <script src="../../common/js/jquery-ui.js"></script>
+  <script src="../../common/js/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+  <!-- 위 script 필요 -->
+  <script src="../../common/js/common.js"></script>
+  <title>Document</title>
+</head>
+<body id="git">
+  <div class="kit-group">
+    <div class="content-view-area">
+      <div class="kit-view-box">
+<!-- html , style, js 작성 -->
+<footer id="footer">
+  <div class="inner large flex-box">
+      <h1><a href="/" class="ft-logo"><span class="blind">코드플로</span></a></h1>
+
+      <address>
+          <div>제이파운더스 주식회사</div>
+          <div>대표이사: 이준환</div>
+          <div>서울특별시 강남구 강남대로136길 10, 5층,6층</div>
+          <div>대표번호: <a href="tel:025437829">02-543-7829</a></div>
+          <div>E-Mail: <a href="mailto:help@jxgrowit.com">help@jxgrowit.com</a></div>
+      </address>
+
+      <div class='col right'>
+          <div>사업자등록번호: 169-88-02154</div>
+          <div class="copyright">© Copyright ⓒ 2024 Jfounders All Rights Reserved.</div>
+      </div>
+  </div>
+</footer>
+<style>
+/* footer */
+.flex-box { display: flex;}
+footer { background: #FAFAFA; padding: 70px 0; font-size: 14px; color: #666;}
+footer a { color: #666;}
+footer .ft-logo { display: block; width: 138px; height: 29px; background: url(../img/hd-logo.svg) no-repeat center/cover; }
+footer address { margin-left: 16.8%; font-style: normal;}
+footer address div { position: relative; margin-bottom: 13px; margin-right: 30px;}
+footer address div:not(:nth-child(3)) { display: inline-block;}
+footer address div:nth-child(1):after,
+footer address div:nth-child(4):after { content: ''; display: inline-block; width: 2px; height: 12px; background: #C7C7C7; position: absolute; right: -16px; top: 50%; transform: translateY(-50%);}
+footer .col.right { margin-left: 17.6%;}
+footer .col.right div:not(.copyright) { margin-bottom: 13px;}
+@media all and (max-width: 1024px)  {
+  footer { font-size: 12px; line-height: 1; padding: 40px 0;}
+  footer .inner { flex-direction: column;}
+  footer address { margin-left: 0; margin-bottom: 28px;}
+  footer .col.right { margin-left: 0;}
+  footer h1 { margin-bottom: 27px;}
+}
+</style>
+      </div>
+    </div>
+    <div class="content-code-area">
+      <div class="inner accordion-wrap">
+        <div class="content-top">
+          <button type="button" class="btn-accordion on"><img src="../../common/img/ico-arrow-accordion.png" alt=""></button>
+          <button type="button" class="btn-prevlink"><img src="../../common/img/ico-arrow-prevlink.png" alt=""></button>
+        </div>
+        <div class="content-body on">
+          <div class="tabs">
+            <button class="tab-button" data-tab="html">HTML</button>
+            <button class="tab-button" data-tab="css">CSS</button>
+            <button class="tab-button" data-tab="js">JavaScript</button>
+          </div>
+          <pre><code class="kit-code-box hljs"></code></pre>
+          <button class="copy-button">복사</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+

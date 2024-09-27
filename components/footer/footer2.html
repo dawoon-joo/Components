@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../common/css/font/font.css">
+  <link rel="stylesheet" href="../../common/css/base.css">
+  <link rel="stylesheet" href="../../common/css/common.css">
+  <script src="../../common/js/gsap.min.js"></script>
+  <script src="../../common/js/scrollreveal.min.js"></script>
+  <script src="../../common/js/ScrollTrigger.min.js"></script>
+  <script src="../../common/js/ScrollToPlugin.min.js"></script>
+  <script src="../../common/js/jquery-1.12.4.min.js"></script>
+  <script src="../../common/js/jquery-1.8.3.min.js"></script>
+  <script src="../../common/js/jquery-ui.js"></script>
+  <script src="../../common/js/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+  <!-- 위 script 필요 -->
+  <script src="../../common/js/common.js"></script>
+  <title>Document</title>
+</head>
+<body id="git">
+  <div class="kit-group">
+    <div class="content-view-area">
+      <div class="kit-view-box">
+<!-- html , style, js 작성 -->
+<footer class="footer">
+  <div class="footer_inner">
+    <h2>
+      <a href="/">
+        <span class="hide">KUMSUNG</span>
+      </a>
+    </h2>
+    <div class="footer_address">
+      <ul class="footer_info">
+        <li>
+          <a href="/">회사소개</a>
+          <span class="line_ht"></span>
+        </li>
+        <li>
+          <a href="/" class="txt_bold">이용약관</a>
+          <span class="line_ht"></span>
+        </li>
+        <li>
+          <a href="/" class="txt_bold">개인정보취급방침</a>
+          <span class="line_ht line_ht_mo"></span>
+        </li>
+      </ul>
+      <ul class="footer_info footer_info2">
+        <li>
+          <a href="/">문의전화</a>
+          <span class="line_ht"></span>
+        </li>
+        <li>
+          <a href="/">찾아오시는길</a>
+        </li>
+      </ul>
+      <div class="line"></div>
+      <div class="site-wrap">
+        <button type="button" class="btn-site">FAMILY SITE</button>
+        <div class="icon_box">
+          <span></span>
+        </div>
+        <ul class="familyLink">
+          <li><a href="https://www.eugenes.co.kr/" target="_blank" title="새창열림">패밀리A</a></li>
+          <li><a href="http://www.ace-hardware.co.kr/display/mallMain.do" target="_blank" title="새창열림">패밀리B</a>
+          </li>
+          <li><a href="https://tongyanginc.co.kr/" target="_blank" title="새창열림">패밀리C</a></li>
+          <li><a href="https://tongyanginc.co.kr/" target="_blank" title="새창열림">패밀리D</a></li>
+          <li><a href="https://tongyanginc.co.kr/" target="_blank" title="새창열림">패밀리E</a></li>
+        </ul>
+      </div>
+      <address>
+        <span>(주)금성출판사 <span class="line_ht"></span></span>
+        <span>주소 : 서울시 마포구 만리재옛길 23</span>
+      </address>
+      <address>
+        <p class="copyright">
+          Copyright© Kumsung Publishing All RIGHTS RESERVED
+        </p>
+      </address>
+    </div>
+    <div class="scroll_to">
+      <img src="./assets/images/scroll_btn.png" alt="스크롤 버튼">
+    </div>
+  </div>
+</footer>
+<style>
+/* footer */
+footer { margin-top: auto; } 
+footer .footer_inner { width: 100%; padding: 79px 110px 20px; display: flex; } 
+footer .footer_inner h2 { margin-bottom: 20px; } 
+footer .footer_inner h2 a { display: block; } 
+footer .footer_inner h2 a img { width: 148px; height: 51px; } 
+footer .footer_inner .footer_address { position: relative; margin-left: 104px; width: 100%; } 
+footer .footer_inner .footer_address .footer_info { display: inline-block; flex-wrap: wrap; margin-bottom: 15px; } 
+footer .footer_inner .footer_address .footer_info.footer_info2 { margin-bottom: 15px; } 
+footer .footer_inner .footer_address .footer_info li { display: inline-block; align-items: center; } 
+footer .footer_inner .footer_address .footer_info li a { font-size: 16px; color: #333; transition: 0.5s; } 
+footer .footer_inner .footer_address span.line_ht { display: inline-block; height: 16px; width: 2px; background: #e5e5e5; margin: 0 20px; } 
+footer .footer_inner .footer_address .line { display: none; width: 100%; height: 1px; background: #efefef; margin-bottom: 30px; } 
+footer .footer_inner .footer_address .site-wrap { position: absolute; right: 0; top: 0; width: 200px; cursor: pointer; padding: 16px 20px; border: 1px solid #e5e5e5; color: #999; display: flex; align-items: center; margin-bottom: 28px; } 
+footer .footer_inner .footer_address .site-wrap .icon_box { margin-left: auto; width: 0; height: 0; border-top: 10px solid #5285a2; border-left: 7px solid transparent; border-right: 7px solid transparent; } 
+footer .footer_inner .footer_address .site-wrap .familyLink { width: 100%; position: absolute; display: none; top: 100%; left: 50%; transform: translateX(-50%); padding: 20px; border: 1px solid #e5e5e5; max-height: 135px; overflow-y: auto; background: #fff; } 
+footer .footer_inner .footer_address .site-wrap .familyLink::-webkit-scrollbar { width: 5px; } 
+footer .footer_inner .footer_address .site-wrap .familyLink::-webkit-scrollbar-thumb { background: #5285a2; border-radius: 12px 12px 12px 12px; } 
+footer .footer_inner .footer_address .site-wrap .familyLink li a { font-size: 16px; line-height: 35px; letter-spacing: 0px; color: #999999; } 
+footer .footer_inner .footer_address .site-wrap.open .icon_box { border-top: 0; border-bottom: 10px solid #5285a2; } 
+footer .footer_inner .footer_address .site-wrap.open .familyLink { display: block; } 
+footer .footer_inner .footer_address address { margin-bottom: 60px; } 
+footer .footer_inner .footer_address address span { display: inline-block; font-size: 16px; line-height: 25px; color: #333; } 
+footer .footer_inner .footer_address address p.copyright { font-size: 16px; line-height: 35px; color: #666; font-family: "Noto Serif", sans-serif; } 
+footer .footer_inner .scroll_to { display: none; } 
+@media screen and (max-width: 1200px) { 
+  footer .footer_inner { padding: 79px 20px 20px; flex-direction: column; } 
+  footer .footer_inner .footer_address { margin-left: 0; } 
+}
+@media screen and (max-width: 800px) {
+  /* footer */
+  footer .footer_inner { position: relative; width: 100%; padding: 40px 20px 26px; display: flex; flex-direction: column; } 
+  footer .footer_inner h2 { margin-bottom: 20px; } 
+  footer .footer_inner h2 a { display: block; max-width: 90px; } 
+  footer .footer_inner .footer_address { margin-left: 0; display: flex; flex-wrap: wrap; } 
+  footer .footer_inner .footer_address .footer_info { display: flex; flex-wrap: wrap; margin-bottom: 30px; } 
+  footer .footer_inner .footer_address .footer_info.footer_info2 { margin-bottom: 30px; } 
+  footer .footer_inner .footer_address .footer_info li { display: flex; align-items: center; } 
+  footer .footer_inner .footer_address .footer_info li a { font-size: 13px; } 
+  footer .footer_inner .footer_address .footer_info li span.line_ht { height: 16px; width: 2px; background: #e5e5e5; margin: 0 20px; } 
+  footer .footer_inner .footer_address .line { display: block; } 
+  footer .footer_inner .footer_address .site-wrap { position: relative; width: 100%; max-height: 50px; margin-bottom: 28px; } 
+  footer .footer_inner .footer_address address { margin-bottom: 24px; } 
+  footer .footer_inner .footer_address address span { display: block; font-size: 12px; line-height: 25px; } 
+  footer .footer_inner .footer_address address span.line_ht { display: none; } 
+  footer .footer_inner .footer_address address p.copyright { font-size: 12px; line-height: 35px; } 
+  footer .footer_inner .scroll_to { display: block; position: absolute; right: 10px; top: 20px; cursor: pointer; } 
+}
+@media screen and (max-width: 539px) { 
+  /* footer */
+  footer .footer_inner .footer_address .footer_info li a { font-size: 12px; } 
+  footer .footer_inner .footer_address .footer_info li span.line_ht { height: 13px; margin: 0 10px; } 
+}
+@media screen and (max-width: 320px) { /* header */
+  /* footer */
+  footer .footer_inner { padding: 20px 10px; } 
+  footer .footer_inner h2 { margin-bottom: 10px; } 
+  footer .footer_inner .footer_address .line { margin-bottom: 20px; } 
+  footer .footer_inner .footer_address .footer_info { margin-bottom: 10px; } 
+  footer .footer_inner .footer_address .footer_info.footer_info2 { margin-bottom: 20px; } 
+  footer .footer_inner .footer_address .footer_info li a { font-size: 12px; } 
+  footer .footer_inner .footer_address .footer_info li span.line_ht { height: 14px; margin: 0 10px; } 
+  footer .footer_inner .footer_address .footer_info li span.line_ht.line_ht_mo { display: none; } 
+  footer .footer_inner .footer_address .site-wrap { max-height: 30px; margin-bottom: 20px; font-size: 12px; } 
+  footer .footer_inner .footer_address .site-wrap .icon_box { border-top: 6px solid #c8b58d; border-left: 4px solid transparent; border-right: 4px solid transparent; } 
+  footer .footer_inner .footer_address address { margin-bottom: 20px; } 
+  footer .footer_inner .footer_address address span { font-size: 12px; line-height: 14px; } 
+  footer .footer_inner .footer_address address p.copyright { font-size: 10px; line-height: 14px; } 
+  footer .footer_inner .scroll_to { width: 30px; height: 3px; } 
+}
+</style>
+<script>
+// footer updown
+const siteLinkBtn = document.querySelector('.site-wrap');
+siteLinkBtn.addEventListener('click', () => {
+  siteLinkBtn.classList.toggle('open');
+})
+</script>
+      </div>
+    </div>
+    <div class="content-code-area">
+      <div class="inner accordion-wrap">
+        <div class="content-top">
+          <button type="button" class="btn-accordion on"><img src="../../common/img/ico-arrow-accordion.png" alt=""></button>
+          <button type="button" class="btn-prevlink"><img src="../../common/img/ico-arrow-prevlink.png" alt=""></button>
+        </div>
+        <div class="content-body on">
+          <div class="tabs">
+            <button class="tab-button" data-tab="html">HTML</button>
+            <button class="tab-button" data-tab="css">CSS</button>
+            <button class="tab-button" data-tab="js">JavaScript</button>
+          </div>
+          <pre><code class="kit-code-box hljs"></code></pre>
+          <button class="copy-button">복사</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+
