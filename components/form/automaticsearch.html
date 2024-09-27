@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../common/css/font/font.css">
+  <link rel="stylesheet" href="../../common/css/base.css">
+  <link rel="stylesheet" href="../../common/css/common.css">
+  <script src="../../common/js/gsap.min.js"></script>
+  <script src="../../common/js/scrollreveal.min.js"></script>
+  <script src="../../common/js/ScrollTrigger.min.js"></script>
+  <script src="../../common/js/ScrollToPlugin.min.js"></script>
+  <script src="../../common/js/jquery-1.12.4.min.js"></script>
+  <script src="../../common/js/jquery-1.8.3.min.js"></script>
+  <script src="../../common/js/jquery-ui.js"></script>
+  <script src="../../common/js/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+  <!-- 위 script 필요 -->
+  <script src="../../common/js/common.js"></script>
+  <title>Document</title>
+</head>
+<body id="git">
+  <div class="kit-group">
+    <div class="content-view-area">
+      <div class="kit-view-box">
+<!-- html , style, js 작성 -->
+<div class="box">
+  <div class="inner">
+    <input type="text" id="search" placeholder="검색어를 입력하세요...">
+    <ul id="suggestions"></ul>
+  </div>
+</div>
+<style>
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+#suggestions {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#suggestions.on {
+  opacity: 1;
+  visibility: visible;
+}
+
+#suggestions li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+#suggestions li:hover {
+  background-color: #f0f0f0;
+}
+
+mark {
+  background-color: yellow;
+  color: black;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px 5px 0 0;
+}
+</style>
+<script>
+const mapData = [
+  "클럽72바다",
+  "라비에벨",
+  "베어크리크",
+  "자유",
+  "B.A비스타",
+  "수원",
+  "리베라",
+  "아시아나",
+  "아라미르",
+  "가야",
+  "무안",
+  "썬힐",
+  "엘리시안강촌",
+  "라데나",
+  "포천아도니스",
+  "푸른솔포천",
+  "스마트KU",
+  "양평TPC",
+  "파가니카",
+  "서원힐스",
+  "남촌",
+  "베어크리크춘천",
+  "남춘천",
+  "리앤리",
+  "서원밸리",
+  "뉴코리아",
+  "일동레이크",
+  "서서울",
+  "클럽모우",
+  "파주",
+  "블루원용인",
+  "제일",
+  "안성베네스트",
+  "360도",
+  "블랙스톤이천",
+  "신안",
+  "남수원 ",
+  "유니아일랜드",
+  "여주",
+  "은화삼",
+  "발리오스",
+  "골프존 안성H",
+  "골프존 안성W",
+  "페럼",
+  "해솔리아",
+  "캐슬파인",
+  "오션힐스포항",
+  "양산",
+  "에이원",
+  "골드레이크",
+  "파인힐스",
+  "해피니스",
+  "어등산",
+  "동촌",
+  "실크리버(세레니티)",
+  "아크로",
+  "레이캐슬",
+  "금강센테리움",
+  "푸른솔장성",
+  "샤인데일",
+  "비전힐스",
+  "버치힐",
+  "알펜시아",
+  "동원썬밸리",
+  "자유로",
+  "노스팜",
+  "포레스트힐",
+  "벨라스톤",
+  "웰리힐리",
+  "강남300",
+  "오너스",
+  "옥스필드",
+  "타이거",
+  "필로스",
+  "파크밸리",
+  "알펜시아700",
+  "힐드로사이",
+  "센츄리21",
+  "로드힐스",
+  "용평",
+  "이글몬트",
+  "한원",
+  "이천마이다스",
+  "남서울",
+  "H1",
+  "이포",
+  "솔트베이",
+  "써닝포인트",
+  "뉴스프링빌",
+  "남여주",
+  "안성윈체스트",
+  "금강",
+  "안성Q",
+  "파인크리크",
+  "렉스필드",
+  "스카이밸리",
+  "마에스트로",
+  "여주썬밸리",
+  "신원",
+  "기흥",
+  "아리지",
+  "안성",
+  "실크밸리",
+  "동여주",
+  "골드",
+  "클럽72하늘",
+  "더반 ",
+  "통영동원로얄",
+  "아난티남해",
+  "강동베이스타즈",
+  "의령리온",
+  "오션힐스영천",
+  "그레이스",
+  "다이아몬드",
+  "구미",
+  "베이사이드",
+  "이지스카이",
+  "경주",
+  "밀양노벨",
+  "드비치",
+  "아시아드",
+  "양산동원로얄",
+  "정산",
+  "루나엑스",
+  "서경타니",
+  "스톤게이트",
+  "김해상록",
+  "오션힐스청도",
+  "파라지오",
+  "창원",
+  "기장동원로얄",
+  "한맥",
+  "거제뷰",
+  "포도",
+  "함평베르힐",
+  "광주",
+  "레인보우힐스",
+  "무등산",
+  "골프존카운티진천",
+  "히든밸리",
+  "떼제베",
+  "시티파크",
+  "시그너스",
+  "다산베아체",
+  "청주그랜드",
+  "파인비치",
+  "군산",
+  "화순",
+  "파인스톤",
+  "담양레이나",
+  "아리스타",
+  "우정힐스",
+  "백제",
+  "써미트",
+  "코스카",
+  "클럽디보은",
+  "화순엘리체",
+  "세종에머슨",
+  "스타",
+  "마론뉴데이",
+  "일죽썬밸리",
+  "세이지우드 여수경도",
+  "태인",
+  "프린세스",
+  "드래곤레이크",
+  "임페리얼레이크",
+  "세일",
+  "석정힐",
+  "일레븐",
+  "이븐데일",
+  "감곡",
+  "장수",
+  "장흥JNJ ",
+  "남원상록",
+  "골든베이",
+  "태안비치(스톤비치)",
+  "로얄포레",
+  "힐데스하임(대전)",
+  "대영베이스",
+  "대영힐스",
+  "일라이트",
+  "대호단양",
+  "에딘버러",
+  "골프존카운티화랑",
+  "함평엘리체",
+  "골프존카운티 선운",
+  "솔라시도",
+  "킹스데일",
+  "올데이",
+  "전주샹그릴라",
+  "클럽디속리산",
+  "천안상록",
+  "내장산",
+  "가평베네스트",
+  "오크힐스",
+  "참밸리",
+  "포천힐스",
+  "남부",
+  "신라",
+  "양지파인",
+  "인천그랜드",
+  "골프존카운티천안",
+  "아름다운",
+  "파나시아",
+  "골프존카운티사천",
+  "구니",
+  "동부산",
+  "부산",
+  "이스트힐",
+  "포천힐마루",
+  "골프존카운티경남",
+  "팔공",
+  "골프존카운티 선산",
+  "대구",
+  "파미힐스",
+  "골프존카운티 구미",
+  "뉴스프링빌2",
+  "블루원상주",
+  "엠스클럽의성",
+  "골프존카운티청통",
+  "포항",
+  "리버힐",
+  "더골프",
+  "아이위시",
+  "라싸",
+  "세현",
+  "샌드파인",
+  "파인리즈",
+  "휘슬링락",
+  "블랙밸리",
+  "설악썬밸리",
+  "파인밸리",
+  "유성",
+  "도고",
+  "천룡",
+  "디오션",
+  "상떼힐익산",
+  "부영순천",
+  "보성",
+  "클린밸리",
+  "웨스트오션(구 영광)",
+  "플라밍고",
+  "모나크",
+  "보령베이스",
+  "블랙스톤제주",
+  "에버리스",
+  "오라",
+  "케슬렉스제주",
+  "타미우스",
+  "더클래식",
+  "부영제주",
+  "아덴힐",
+  "더시에나",
+  "중문",
+  "그린필드",
+  "펜타뷰(청도)",
+  "포웰",
+  "오로라cc",
+  "벨라45",
+  "에스파크",
+  "스프링베일",
+  "월송리",
+  "카스카디아",
+  "용인",
+  "에딘바러(오창)",
+  "빅토리아",
+  "칼레이트",
+  "용평나인",
+  "라비돌",
+  "플라자",
+  "화성",
+];
+class DataHandler {
+  constructor(data) {
+    this.data = data;
+  }
+
+  filterData(input) {
+    return this.data.filter(item => item.toLowerCase().includes(input.toLowerCase()));
+  }
+
+  sortData(input, data) {
+    return data.sort((a, b) => {
+      const aStartsWith = a.toLowerCase().startsWith(input.toLowerCase());
+      const bStartsWith = b.toLowerCase().startsWith(input.toLowerCase());
+
+      if (aStartsWith && !bStartsWith) {
+        return -1;
+      } else if (!aStartsWith && bStartsWith) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+  }
+
+  getSuggestions(input) {
+    if (input.length === 0) {
+      return [];
+    }
+
+    const filteredData = this.filterData(input);
+    return this.sortData(input, filteredData);
+  }
+}
+const dataHandler = new DataHandler(mapData);
+const suggestions = document.getElementById('suggestions');
+
+const showSuggestions = (input) => {
+  suggestions.innerHTML = '';
+
+  const suggestionList = dataHandler.getSuggestions(input);
+  if (suggestionList.length > 0) {
+    suggestions.classList.add('on');
+  } else {
+    suggestions.classList.remove('on');
+  }
+
+  suggestionList.forEach(item => {
+    const li = document.createElement('li');
+    const regex = new RegExp(`(${input})`, 'gi');
+    const highlightedText = item.replace(regex, '<mark>$1</mark>');
+    li.innerHTML = highlightedText;
+    li.onclick = () => {
+      document.getElementById('search').value = item;
+      suggestions.innerHTML = '';
+      suggestions.classList.remove('on');
+    };
+    suggestions.appendChild(li);
+  });
+};
+
+document.getElementById('search').addEventListener('input', (event) => {
+  showSuggestions(event.target.value);
+});
+</script>
+      </div>
+    </div>
+    <div class="content-code-area">
+      <div class="inner accordion-wrap">
+        <div class="content-top">
+          <button type="button" class="btn-accordion on"><img src="../../common/img/ico-arrow-accordion.png" alt=""></button>
+          <button type="button" class="btn-prevlink"><img src="../../common/img/ico-arrow-prevlink.png" alt=""></button>
+        </div>
+        <div class="content-body on">
+          <div class="tabs">
+            <button class="tab-button" data-tab="html">HTML</button>
+            <button class="tab-button" data-tab="css">CSS</button>
+            <button class="tab-button" data-tab="js">JavaScript</button>
+          </div>
+          <pre><code class="kit-code-box hljs"></code></pre>
+          <button class="copy-button">복사</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+

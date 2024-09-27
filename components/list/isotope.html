@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../common/css/font/font.css">
+  <link rel="stylesheet" href="../../common/css/base.css">
+  <link rel="stylesheet" href="../../common/css/common.css">
+  <script src="../../common/js/jquery-3.7.1.min.js"></script>
+  <script src="../../common/js/isotope.pkgd.min.js"></script>
+  <script src="../../common/js/imagesloaded.pkgd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+  <!-- 위 script 필요 -->
+  <script src="../../common/js/common.js"></script>
+  <title>Document</title>
+</head>
+<body id="git">
+  <div class="kit-group">
+    <div class="content-view-area">
+      <div class="kit-view-box">
+<!-- html , style, js 작성 -->
+<div class="content-article">
+  <div class="article-wrap">
+    <article>
+      <a href="javascript:">
+        <div class="thumb">
+          <img src="../../common/img/list/thum.png" alt="">
+        </div>
+      </a>
+    </article>
+    <article>
+      <a href="javascript:">
+        <div class="thumb">
+          <img src="../../common/img/list/thum2.jpg" alt="">
+        </div>
+      </a>
+    </article>
+    <article>
+      <a href="javascript:">
+        <div class="thumb">
+          <img src="../../common/img/list/thum3.jpg" alt="">
+        </div>
+      </a>
+    </article>
+    <article>
+      <a href="javascript:">
+        <div class="thumb">
+          <img src="../../common/img/list/thum4.png" alt="">
+        </div>
+      </a>
+    </article>
+    <article>
+      <a href="javascript:">
+        <div class="thumb">
+          <img src="../../common/img/list/thum5.jpg" alt="">
+        </div>
+      </a>
+    </article>
+    <article>
+      <a href="javascript:">
+        <div class="thumb">
+          <img src="../../common/img/list/thum6.png" alt="">
+        </div>
+      </a>
+    </article>
+    <article>
+      <a href="javascript:">
+        <div class="thumb">
+          <img src="../../common/img/list/thum.png" alt="">
+        </div>
+      </a>
+    </article>
+    <article>
+      <a href="javascript:">
+        <div class="thumb">
+          <img src="../../common/img/list/thum7.jpg" alt="">
+        </div>
+      </a>
+    </article>
+    <article>
+      <a href="javascript:">
+        <div class="thumb">
+          <img src="../../common/img/list/thum2.jpg" alt="">
+        </div>
+      </a>
+    </article>
+  </div>
+</div>
+<style>
+  * { margin: 0; padding: 0;}
+  .content-article {
+    max-width: 1220px;
+    width: 95%;
+    margin: 0 auto;
+    padding: 150px 0;
+    min-height: 100vh;
+  }
+  .article-wrap { display: flex; flex-wrap: wrap;}
+  .article-wrap article { padding: 20px; box-sizing: border-box; width:33.333%;}
+  .article-wrap article img { width: 100%;}
+</style>
+<script>
+var $grid = $(".article-wrap");
+function initIsotope() {
+  $grid.isotope({ //모션을 적용할 박스의 부모 선택자명
+    itemSelector: ".article-wrap article", //모션을 적용할 박스 선택자명
+    columnWidth: ".article-wrap article", // 너비값을 구할 박스 선택자명
+    percentPosition: true,
+    transitionDuration: "0.5s", // 모션 이동 속도
+  });
+}
+$(function () {
+  initIsotope();
+})
+// 동적생성되는 요소에 대한 이벤트 처리
+$grid.imagesLoaded().progress(function () {
+  $grid.isotope('reloadItems').isotope({ sortBy: 'original-order' });
+});
+
+</script>
+      </div>
+    </div>
+    <div class="content-code-area">
+      <div class="inner accordion-wrap">
+        <div class="content-top">
+          <button type="button" class="btn-accordion on"><img src="../../common/img/ico-arrow-accordion.png" alt=""></button>
+          <button type="button" class="btn-prevlink"><img src="../../common/img/ico-arrow-prevlink.png" alt=""></button>
+        </div>
+        <div class="content-body on">
+          <div class="tabs">
+            <button class="tab-button" data-tab="html">HTML</button>
+            <button class="tab-button" data-tab="css">CSS</button>
+            <button class="tab-button" data-tab="js">JavaScript</button>
+            <button class="copy-button">복사</button>
+          </div>
+          <code class="kit-code-box hljs"></code>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+
