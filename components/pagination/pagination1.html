@@ -165,85 +165,173 @@ li,ol,ul { list-style: none;}
 }
 </style>
 <script>
-document.addEventListener('DOMContentLoaded', () => {  
-  const pagination = new Pagination('.campaign_list', '.indi');
-  document.querySelector('.btn-prev').addEventListener('click', () => pagination.prevPage());
-  document.querySelector('.btn-next').addEventListener('click', () => pagination.nextPage());
+document.addEventListener('DOMContentLoaded', () => {
+  const campaignListElement = document.querySelector('.campaign_list');
+  const indicatorElement = document.querySelector('.indi');
+
+  let pagination = null;
+  if (campaignListElement && indicatorElement) {
+      pagination = new Pagination('.campaign_list', '.indi');
+      
+      document.querySelector('.btn-prev').addEventListener('click', () => pagination.prevPage());
+      document.querySelector('.btn-next').addEventListener('click', () => pagination.nextPage());
+
+      // 모든 a 링크 클릭 시 쿠키에 페이지 저장
+      document.querySelectorAll('.campaign_list a').forEach(link => {
+          link.addEventListener('click', (event) => {
+              // 현재 페이지 번호를 쿠키에 저장
+              setCookie('page', pagination.currentPage + 1, 1);
+              console.log(`현재 페이지 ${pagination.currentPage + 1}가 쿠키에 저장되었습니다.`);
+              
+              // URL도 업데이트
+              const url = new URL(link.href);
+              url.searchParams.set('page', pagination.currentPage + 1);
+              link.href = url.toString();
+          });
+      });
+
+      // 페이지 로드 시 쿠키에서 페이지 가져오기
+      const page = getCookie('page');
+      if (page) {
+          pagination.showPage(parseInt(page, 10) - 1, false);
+      }
+
+      // 뒤로 가기 클릭 시 쿠키에서 페이지 가져오기
+      window.addEventListener('popstate', (event) => {
+          const page = getCookie('page');
+          if (page) {
+              pagination.showPage(parseInt(page, 10) - 1, false);
+              console.log(`쿠키에서 가져온 페이지 ${page}로 이동합니다.`);
+          } else {
+              // 페이지가 없으면 기본 페이지로 이동
+              pagination.showPage(0, false);
+          }
+      });
+  }
+
+  // Campaign 링크 클릭 시 첫 번째 탭으로 이동
+  const campaignLink = document.querySelector('.campaign_link');
+  if (campaignLink) {
+      campaignLink.addEventListener('click', (event) => {
+          event.preventDefault(); // 기본 동작 막기
+          setCookie('page', 1, 1);
+          console.log('Campaign 페이지로 이동 시 첫 번째 탭으로 설정되었습니다.');
+          if (pagination) {
+              pagination.showPage(0); // 첫 번째 탭으로 이동
+          }
+          setTimeout(() => {
+              window.location.href = campaignLink.href; // 페이지 이동
+          }, 100); // 페이지 이동 전에 약간의 지연을 추가
+      });
+  }
 });
-class Pagination {
-    constructor(campaignListSelector, indicatorSelector, itemsPerPage = 8, paginationGroupSize = 8) {
-        this.itemsPerPage = itemsPerPage;
-        this.paginationGroupSize = paginationGroupSize;
-        this.campaignList = document.querySelector(campaignListSelector);
-        this.items = Array.from(this.campaignList.children);
-        this.totalPages = Math.ceil(this.items.length / this.itemsPerPage);
-        this.totalGroups = Math.ceil(this.totalPages / this.paginationGroupSize);
-        this.indicator = document.querySelector(indicatorSelector);
-        this.currentPage = 0;
-        this.currentGroup = 0;
 
-        this.showPage(this.currentPage);
-    }
-
-    showPage(page) {
-        this.items.forEach((item, index) => {
-            item.classList.toggle('hidden', Math.floor(index / this.itemsPerPage) !== page);
-        });
-        this.currentPage = page;
-        this.currentGroup = Math.floor(this.currentPage / this.paginationGroupSize);
-        this.updateIndicator();
-    }
-
-    updateIndicator() {
-        this.indicator.innerHTML = '';
-
-        const startPage = this.currentGroup * this.paginationGroupSize;
-        const endPage = Math.min(startPage + this.paginationGroupSize, this.totalPages);
-
-        for (let i = startPage; i < endPage; i++) {
-            const li = document.createElement('li');
-            const a = document.createElement('a');
-            a.href = '#';
-            a.textContent = i + 1;
-            a.onclick = (event) => {
-                event.preventDefault();
-                this.showPage(i);
-                window.scrollTo(0, 0);
-            };
-            if (i === this.currentPage) {
-                a.classList.add('active');
-            }
-            li.appendChild(a);
-            this.indicator.appendChild(li);
-        }
-    }
-
-    prevPage() {
-        if (this.totalGroups === 1) {
-            if (this.currentPage > 0) {
-                this.showPage(this.currentPage - 1);
-                window.scrollTo(0, 0);
-            }
-        } else if (this.currentGroup > 0) {
-            this.currentGroup--;
-            this.showPage(this.currentGroup * this.paginationGroupSize);
-            window.scrollTo(0, 0);
-        }
-    }
-
-    nextPage() {
-        if (this.totalGroups === 1) {
-            if (this.currentPage < this.totalPages - 1) {
-                this.showPage(this.currentPage + 1);
-                window.scrollTo(0, 0);
-            }
-        } else if (this.currentGroup < this.totalGroups - 1) {
-            this.currentGroup++;
-            this.showPage(this.currentGroup * this.paginationGroupSize);
-            window.scrollTo(0, 0);
-        }
-    }
+// 쿠키 관리 함수들
+function setCookie(name, value, days) {
+  let expires = "";
+  if (days) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
+
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+  return null;
+}
+
+class Pagination {
+  constructor(campaignListSelector, indicatorSelector, itemsPerPage = 8, paginationGroupSize = 8) {
+      this.itemsPerPage = itemsPerPage;
+      this.paginationGroupSize = paginationGroupSize;
+      this.campaignList = document.querySelector(campaignListSelector);
+      if (!this.campaignList) {
+          throw new Error(`Element not found: ${campaignListSelector}`);
+      }
+      this.items = Array.from(this.campaignList.children);
+      this.totalPages = Math.ceil(this.items.length / this.itemsPerPage);
+      this.totalGroups = Math.ceil(this.totalPages / this.paginationGroupSize);
+      this.indicator = document.querySelector(indicatorSelector);
+      if (!this.indicator) {
+          throw new Error(`Element not found: ${indicatorSelector}`);
+      }
+      this.currentPage = 0;
+      this.currentGroup = 0;
+
+      this.showPage(this.currentPage);
+  }
+
+  showPage(page) {
+      this.items.forEach((item, index) => {
+          item.classList.toggle('hidden', Math.floor(index / this.itemsPerPage) !== page);
+      });
+      this.currentPage = page;
+      this.currentGroup = Math.floor(this.currentPage / this.paginationGroupSize);
+      this.updateIndicator();
+      this.updateURL();
+  }
+
+  updateIndicator() {
+      this.indicator.innerHTML = '';
+
+      const startPage = this.currentGroup * this.paginationGroupSize;
+      const endPage = Math.min(startPage + this.paginationGroupSize, this.totalPages);
+
+      for (let i = startPage; i < endPage; i++) {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = '#';
+          a.textContent = i + 1;
+          a.onclick = (event) => {
+              event.preventDefault();
+              this.showPage(i);
+              window.scrollTo(0, 0);
+          };
+          if (i === this.currentPage) {
+              a.classList.add('active');
+          }
+          li.appendChild(a);
+          this.indicator.appendChild(li);
+      }
+  }
+
+  updateURL() {
+      const url = new URL(window.location);
+      url.searchParams.set('page', this.currentPage + 1);
+      window.history.pushState({}, '', url);
+  }
+
+  prevPage() {
+      if (this.totalGroups === 1) {
+          if (this.currentPage > 0) {
+              this.showPage(this.currentPage - 1);
+              window.scrollTo(0, 0);
+          }
+      } else if (this.currentGroup > 0) {
+          this.currentGroup--;
+          this.showPage(this.currentGroup * this.paginationGroupSize);
+          window.scrollTo(0, 0);
+      }
+  }
+
+  nextPage() {
+      if (this.totalGroups === 1) {
+          if (this.currentPage < this.totalPages - 1) {
+              this.showPage(this.currentPage + 1);
+              window.scrollTo(0, 0);
+          }
+      } else if (this.currentGroup < this.totalGroups - 1) {
+          this.currentGroup++;
+          this.showPage(this.currentGroup * this.paginationGroupSize);
+          window.scrollTo(0, 0);
+      }
+  }
+}
+
 </script>
       </div>
     </div>
